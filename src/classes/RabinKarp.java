@@ -195,7 +195,7 @@ package classes;
             String pattern = br.readLine();
 
             System.out.println("\nResults : \n");
-
+            
             RabinKarp rk = new RabinKarp(text, pattern);        
 
         }
