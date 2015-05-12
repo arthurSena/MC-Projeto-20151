@@ -1,8 +1,10 @@
 package classes;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+
 import classes.NossaImplementacao_ForcaBruta;
 
 
@@ -12,34 +14,67 @@ import classes.NossaImplementacao_ForcaBruta;
  * @author Arthur, Brunna
  *
  */
+
+
+//texto_buscado:texto_buscado_1.txt texto_busca:nome_texto_busca_1.txt resultado: contem tempo_execucao: xx consumo_memo:yy num_operacaoes: zz
+
+
 public class Main {
 
 	public static void main(String[] args){
 		
 		try{
-			
 			String tecnica = args[0];
-			
-			if (tecnica.equalsIgnoreCase("Knuth-Morris-Pratt")){
-				
-			}
-			else if(tecnica.equalsIgnoreCase("Rabin–Karp")){
-				
-			}
-			else if(tecnica.equalsIgnoreCase("forca-bruta")){
-				
-			}
 			
 			String entrada  = deserializeString(new File(args[2]));
 			
 			String padrao  = deserializeString(new File(args[1]));
 
-			NossaImplementacao_ForcaBruta nossaImpl = new NossaImplementacao_ForcaBruta(entrada,padrao);
-			nossaImpl.search();
+			if (tecnica.equalsIgnoreCase("Knuth-Morris-Pratt")){
+				System.out.println("texto_buscado: "
+						+ (new File(args[1]).getName()) + " texto_busca: "
+						+ (new File(args[2]).getName()));
 
+				
+			    long inicio = System.currentTimeMillis();    
+			    KnuthMorrisPratt kmp = new KnuthMorrisPratt(entrada, padrao);    
+			    long fim  = System.currentTimeMillis();    
+			    long tempo = fim - inicio;
+			    System.out.println("tempo_execucao: " + String.valueOf(tempo) +" milisegundos ");  
+				
+				
+			}
+			else if(tecnica.equalsIgnoreCase("Rabin–Karp")){
+				System.out.println("texto_buscado: "
+						+ (new File(args[1]).getName()) + " texto_busca: "
+						+ (new File(args[2]).getName()));
+				
+				 long inicio = System.currentTimeMillis();    
+	            RabinKarp rk = new RabinKarp(entrada, padrao);   
+	            long fim  = System.currentTimeMillis();    
+			    long tempo = fim - inicio;
+			    System.out.println("tempo_execucao: " + String.valueOf(tempo) +" milisegundos ");    
+			}
+			else if(tecnica.equalsIgnoreCase("forca-bruta")){
+				System.out.println("texto_buscado: "
+						+ (new File(args[1]).getName()) + " texto_busca: "
+						+ (new File(args[2]).getName()));
+				NossaImplementacao_ForcaBruta nossaImpl = new NossaImplementacao_ForcaBruta(entrada,padrao);
+				
+				long inicio = System.currentTimeMillis();    
+				nossaImpl.search();
+				long fim  = System.currentTimeMillis();    
+			    long tempo = fim - inicio;
+			    System.out.println("tempo_execucao: " + String.valueOf(tempo) +" milisegundos ");   
+			}
+			else{
+				System.out.println("Tecnica Inválida.");
+			}
 		}
-		catch(Exception e ){
-			System.out.println("Error");
+		catch(FileNotFoundException e ){
+			System.out.println("Arquivo não encontrado");
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
 		}
 
 	}
@@ -69,3 +104,4 @@ public class Main {
 	      return buffer.toString();
 	}
 }
+

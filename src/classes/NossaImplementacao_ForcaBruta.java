@@ -45,9 +45,9 @@ public class NossaImplementacao_ForcaBruta {
 			}
 		}
 		if (posicao == -1) {
-			System.out.println("Padrao nao encontrado");
+			System.out.println("resultado: nao contem ");
 		} else {
-			System.out.println("Index: " + posicao);
+			System.out.println("resultado: contem");
 		}
 	}
 
@@ -64,3 +64,4 @@ public class NossaImplementacao_ForcaBruta {
 		return temp;
 	}
 }
+

@@ -38,11 +38,11 @@ public class KnuthMorrisPratt
 
 		if (pos == -1)
 
-			System.out.println("\nNo match found");
+			System.out.println(" resultado: nao contem ");
 
 		else
 
-			System.out.println("\nMatch found at index " + pos);
+			System.out.println("resultado: contem ");
 
 	}
 

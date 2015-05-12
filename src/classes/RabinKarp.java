@@ -78,11 +78,11 @@ package classes;
 
             if (pos == -1)
 
-                System.out.println("\nNo Match\n");
+                System.out.println("resultado: não contem ");
 
             else
 
-                System.out.println("Pattern found at position : "+ pos);
+                System.out.println("resultado: contem");
 
         } 
 
