@@ -16,14 +16,12 @@ import classes.NossaImplementacao_ForcaBruta;
  */
 
 
-//texto_buscado:texto_buscado_1.txt texto_busca:nome_texto_busca_1.txt resultado: contem tempo_execucao: xx consumo_memo:yy num_operacaoes: zz
-
-
 public class Main {
 
 	public static void main(String[] args){
 		
 		try{
+			double currentMemory1 = ( (double)((double)(Runtime.getRuntime().totalMemory()/1024)/1024))- ((double)((double)(Runtime.getRuntime().freeMemory()/1024)/1024));
 			String tecnica = args[0];
 			
 			String entrada  = deserializeString(new File(args[2]));
@@ -41,7 +39,8 @@ public class Main {
 			    long fim  = System.currentTimeMillis();    
 			    long tempo = fim - inicio;
 			    System.out.println("tempo_execucao: " + String.valueOf(tempo) +" milisegundos ");  
-				
+			    double currentMemory2 = ( (double)((double)(Runtime.getRuntime().totalMemory()/1024)/1024))- ((double)((double)(Runtime.getRuntime().freeMemory()/1024)/1024));
+			    System.out.println("consum_memom: " + (currentMemory2 - currentMemory1) + "MB");
 				
 			}
 			else if(tecnica.equalsIgnoreCase("Rabin–Karp")){
@@ -53,7 +52,9 @@ public class Main {
 	            RabinKarp rk = new RabinKarp(entrada, padrao);   
 	            long fim  = System.currentTimeMillis();    
 			    long tempo = fim - inicio;
-			    System.out.println("tempo_execucao: " + String.valueOf(tempo) +" milisegundos ");    
+			    System.out.println("tempo_execucao: " + String.valueOf(tempo) +" milisegundos ");   
+			    double currentMemory2 = ( (double)((double)(Runtime.getRuntime().totalMemory()/1024)/1024))- ((double)((double)(Runtime.getRuntime().freeMemory()/1024)/1024));
+			    System.out.println("consum_memom: " + (currentMemory2 - currentMemory1) + "MB");
 			}
 			else if(tecnica.equalsIgnoreCase("forca-bruta")){
 				System.out.println("texto_buscado: "
@@ -65,11 +66,14 @@ public class Main {
 				nossaImpl.search();
 				long fim  = System.currentTimeMillis();    
 			    long tempo = fim - inicio;
-			    System.out.println("tempo_execucao: " + String.valueOf(tempo) +" milisegundos ");   
+			    System.out.println("tempo_execucao: " + String.valueOf(tempo) +" milisegundos ");  
+			    double currentMemory2 = ( (double)((double)(Runtime.getRuntime().totalMemory()/1024)/1024))- ((double)((double)(Runtime.getRuntime().freeMemory()/1024)/1024));
+			    System.out.println("consum_memom: " + (currentMemory2 - currentMemory1) + "MB");
 			}
 			else{
 				System.out.println("Tecnica Inválida.");
 			}
+			
 		}
 		catch(FileNotFoundException e ){
 			System.out.println("Arquivo não encontrado");
