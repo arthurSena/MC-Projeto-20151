@@ -13,6 +13,7 @@ public class NossaImplementacao_ForcaBruta {
 
 	private String text;
 	private String pattern;
+	private int operationNumber = 0;
 
 	/**
 	 * This is the class constructor
@@ -55,6 +56,7 @@ public class NossaImplementacao_ForcaBruta {
 		boolean temp = true;
 		int z = 0;
 		for (int i = pos; z < pattern.length; i++) {
+			this.operationNumber += 1;
 			if (text[i] != pattern[z]) {
 				temp = false;
 				break;
@@ -62,6 +64,10 @@ public class NossaImplementacao_ForcaBruta {
 			z++;
 		}
 		return temp;
+	}
+	
+	public int getOperationNumber(){
+		return this.operationNumber;
 	}
 }
 

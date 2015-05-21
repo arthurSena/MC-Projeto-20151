@@ -48,8 +48,8 @@ package classes;
 
         private long RM;          
 
-     
-
+        private int operationNumber = 0;
+   
         /** Constructor **/
 
         public RabinKarp(String txt, String pat) 
@@ -94,10 +94,10 @@ package classes;
 
             long h = 0; 
 
-            for (int j = 0; j < M; j++) 
-
+            for (int j = 0; j < M; j++) {
+            	this.operationNumber += 1;
                 h = (R * h + key.charAt(j)) % Q; 
-
+            }
             return h; 
 
         } 
@@ -107,15 +107,13 @@ package classes;
         private boolean check(String txt, int i) 
 
         {
-
-            for (int j = 0; j < M; j++) 
-
-                if (pat.charAt(j) != txt.charAt(i + j)) 
-
+            for (int j = 0; j < M; j++) {
+            	this.operationNumber += 1;
+                if (pat.charAt(j) != txt.charAt(i + j)) {
                     return false; 
-
+                }
+            }
             return true;
-
         }
 
         /** Funtion to check for exact match**/
@@ -151,11 +149,10 @@ package classes;
                 // match
 
                 int offset = i - M + 1;
-
                 if ((patHash == txtHash) && check(txt, offset))
 
                     return offset;
-
+                
             }
 
             /** no match **/
@@ -175,6 +172,12 @@ package classes;
             return prime.longValue();
 
         }
+        
+    	public int getOperationNumber(){
+    		return this.operationNumber;
+    	}
+        
+        
 
         /** Main Function **/
 

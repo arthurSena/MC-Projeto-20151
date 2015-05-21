@@ -40,8 +40,8 @@ public class Main {
 			    long tempo = fim - inicio;
 			    System.out.println("tempo_execucao: " + String.valueOf(tempo) +" milisegundos ");  
 			    double currentMemory2 = ( (double)((double)(Runtime.getRuntime().totalMemory()/1024)/1024))- ((double)((double)(Runtime.getRuntime().freeMemory()/1024)/1024));
-			    System.out.println("consum_memom: " + (currentMemory2 - currentMemory1) + "MB");
-				
+			    System.out.println("consum_memom: " + (currentMemory2 - currentMemory1)/1024 + "MB");
+			    System.out.println("num_operacaoes: " + kmp.getOperationNumber());
 			}
 			else if(tecnica.equalsIgnoreCase("Rabin–Karp")){
 				System.out.println("texto_buscado: "
@@ -54,7 +54,9 @@ public class Main {
 			    long tempo = fim - inicio;
 			    System.out.println("tempo_execucao: " + String.valueOf(tempo) +" milisegundos ");   
 			    double currentMemory2 = ( (double)((double)(Runtime.getRuntime().totalMemory()/1024)/1024))- ((double)((double)(Runtime.getRuntime().freeMemory()/1024)/1024));
-			    System.out.println("consum_memom: " + (currentMemory2 - currentMemory1) + "MB");
+			    System.out.println("consum_memom: " + (currentMemory2 - currentMemory1)/1024 + "MB");
+			    System.out.println("num_operacaoes: " + rk.getOperationNumber());
+
 			}
 			else if(tecnica.equalsIgnoreCase("forca-bruta")){
 				System.out.println("texto_buscado: "
@@ -68,7 +70,9 @@ public class Main {
 			    long tempo = fim - inicio;
 			    System.out.println("tempo_execucao: " + String.valueOf(tempo) +" milisegundos ");  
 			    double currentMemory2 = ( (double)((double)(Runtime.getRuntime().totalMemory()/1024)/1024))- ((double)((double)(Runtime.getRuntime().freeMemory()/1024)/1024));
-			    System.out.println("consum_memom: " + (currentMemory2 - currentMemory1) + "MB");
+			    System.out.println("consum_memom: " + (currentMemory2 - currentMemory1)/1024 + "MB");
+			    System.out.println("num_operacaoes: " + nossaImpl.getOperationNumber());
+
 			}
 			else{
 				System.out.println("Tecnica Inválida.");

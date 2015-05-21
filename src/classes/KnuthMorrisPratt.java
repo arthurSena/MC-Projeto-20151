@@ -19,6 +19,8 @@ public class KnuthMorrisPratt
 	/** Failure array **/
 
 	private int[] failure;
+	
+	private int operationNumber = 0;
 
 	/** Constructor **/
 
@@ -62,12 +64,12 @@ public class KnuthMorrisPratt
 
 			int i = failure[j - 1];
 
-			while ((pat.charAt(j) != pat.charAt(i + 1)) && i >= 0)
-
+			this.operationNumber += 1;
+			while ((pat.charAt(j) != pat.charAt(i + 1)) && i >= 0){
 				i = failure[i];
-
+			}
 			if (pat.charAt(j) == pat.charAt(i + 1))
-
+					
 				failure[j] = i + 1;
 
 			else
@@ -93,11 +95,11 @@ public class KnuthMorrisPratt
 		while (i < lens && j < lenp)
 
 		{
-
+			this.operationNumber += 1;
 			if (text.charAt(i) == pat.charAt(j))
 
 			{
-
+               
 				i++;
 
 				j++;
@@ -116,6 +118,10 @@ public class KnuthMorrisPratt
 
 		return ((j == lenp) ? (i - lenp) : -1);
 
+	}
+	
+	public int getOperationNumber(){
+		return this.operationNumber;
 	}
 
 	/** Main Function **/
