@@ -44,6 +44,9 @@ public class NossaImplementacao_ForcaBruta {
 					posicao = i;
 				}
 			}
+			else {
+				this.operationNumber += 1;
+			}
 		}
 		if (posicao == -1) {
 			System.out.println("resultado: nao contem ");

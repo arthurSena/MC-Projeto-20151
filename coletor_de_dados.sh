@@ -4,7 +4,7 @@
 temp1=$(grep MemFree /proc/meminfo)
 
 javac -cp src/ src/classes/Main.java
-java -cp src/ classes/Main $1 $2 $3 
+java -Xmx4g -cp src/ classes/Main $1 $2 $3 
 
 #temp2=$(grep MemFree /proc/meminfo)
 
